@@ -36,10 +36,10 @@ Options:
 
 ```bash
 # if you use VS Code
-code --install-extension latex-pair-editor-0.0.1.vsix
+code --install-extension latex-pair-editor-0.0.2.vsix
 
 # if you use VS Code Insiders
-code-insiders --install-extension latex-pair-editor-0.0.1.vsix
+code-insiders --install-extension latex-pair-editor-0.0.2.vsix
 ```
 
 ## Extension Settings
@@ -51,5 +51,9 @@ LaTeX-Pair-Editor will be configurable in the future.
 ### Version 0.0.1
 
 First Version, Initial Commit, Using RegExp to recognize environments.
+
+### Version 0.0.2
+
+Rewrite docs, Github Synchronous
 
 ---
