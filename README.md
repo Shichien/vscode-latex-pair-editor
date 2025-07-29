@@ -38,12 +38,12 @@ Use the cursor to select a portion of text, right-click to use the corresponding
 
 ## Installing
 
-1. VSCode Version > $1.75.0$ (For future development)
+1. VSCode Version > 1.75.0 (For future development)
 
 Options:
 
 1. Via VSCode Plugin Market
-2. Via `.vsix`
+2. Via `.vsix` (See Release)
     1. In VSCode, go to `Extensions View`
     2. Select `Views and More Actions...`
     3. Select `Install from VSIX...`
