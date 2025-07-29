@@ -19,7 +19,52 @@
     ],
     "main": "./out/extension.js",
     "contributes": {
-        "commands": []
+        "commands": [
+            {
+                "command": "latex-pair-editor.wrapInItemize",
+                "title": "Wrap by itemize",
+                "category": "LaTeX-Pair-Editor"
+            },
+            {
+                "command": "latex-pair-editor.wrapInEnumerate",
+                "title": "Wrap by enumerate",
+                "category": "LaTeX-Pair-Editor"
+            },
+            {
+                "command": "latex-pair-editor.unwrapEnvironment",
+                "title": "Unwrap Environment",
+                "category": "LaTeX-Pair-Editor"
+            }
+        ],
+        "submenus": [
+            {
+                "id": "LaTeX-Pair-Editor-Wrappers-Submenu",
+                "label": "Use LaTeX Wrappers..."
+            }
+        ],
+        "menus": {
+            "editor/context": [
+                {
+                    "submenu": "LaTeX-Pair-Editor-Wrappers-Submenu",
+                    "when": "editorTextFocus && editorLangId == 'latex'",
+                    "group": "navigation"
+                }
+            ],
+            "LaTeX-Pair-Editor-Wrappers-Submenu": [
+                {
+                    "command": "latex-pair-editor.wrapInItemize",
+                    "group": "1_Wrappers-List"
+                },
+                {
+                    "command": "latex-pair-editor.wrapInEnumerate",
+                    "group": "1_Wrappers-List"
+                },
+                {
+                    "command": "latex-pair-editor.unwrapEnvironment",
+                    "group": "9_Wrappers-List"
+                }
+            ]
+        }
     },
     "scripts": {
         "vscode:prepublish": "npm run compile",
