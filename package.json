@@ -2,7 +2,7 @@
     "name": "latex-pair-editor",
     "displayName": "LaTeX-Pair-Editor",
     "description": "Automatically adding a cursor when your main cursor is matching `begin` or `end`",
-    "version": "0.0.2",
+    "version": "0.0.4",
     "publisher": "Shichien",
     "repository": {
         "type": "git",
