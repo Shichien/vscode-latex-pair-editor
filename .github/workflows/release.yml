@@ -10,7 +10,7 @@ jobs:
         runs-on: ubuntu-latest
 
         permissions:
-            contents: write
+            contents: write # [Notice: Add Permission in Repository Settings]
 
         steps:
             - name: Checkout code
