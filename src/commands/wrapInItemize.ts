@@ -12,13 +12,20 @@ export function registerWrapInItemizeCommand(context: vscode.ExtensionContext) {
         const selection = editor.selection;
         const selectedText = editor.document.getText(selection);
         const lines = selectedText.split(/\r?\n/);
-        const itemizedLines = lines.map((line) => (line.trim() === "" ? "" : `    \\item ${line}`));
-        const newText = `\\begin{itemize}\n${itemizedLines.join("\n")}\n\\end{itemize}`;
+
+        const itemizedLines = lines
+            .filter((line) => line.trim() !== "")
+            .map((line) => `    \\item ${line}`);
+        const newText = `\\begin{itemize}\n${itemizedLines.join(
+            "\n"
+        )}\n\\end{itemize}`;
 
         editor.edit((editBuilder) => {
             editBuilder.replace(selection, newText);
         });
     };
 
-    context.subscriptions.push(vscode.commands.registerCommand(commandId, commandHandler));
+    context.subscriptions.push(
+        vscode.commands.registerCommand(commandId, commandHandler)
+    );
 }

@@ -2,6 +2,7 @@ import * as assert from "assert";
 import * as vscode from "vscode";
 import { after, afterEach } from "mocha";
 
+// Function must be async to use await, VSCode API calls are often asynchronous.
 suite("Extension Test Suite", () => {
     vscode.window.showInformationMessage("Start all tests.");
 
@@ -12,91 +13,86 @@ suite("Extension Test Suite", () => {
         );
     });
 
-    // Function must be async to use await, VSCode API calls are often asynchronous.
-    suite("Wrapping Commands Test", () => {
-        test("Wrap in Itemize Command", async () => {
-            const initContent = "Item 1\nItem 2\nItem 3";
-            const expectedContent = [
-                "\\begin{itemize}",
-                "    \\item Item 1",
-                "    \\item Item 2",
-                "    \\item Item 3",
-                "\\end{itemize}"
-            ].join("\n");
+    test("Wrap in Itemize Command", async () => {
+        const initContent = "Item 1\nItem 2\nItem 3";
+        const expectedContent = [
+            "\\begin{itemize}",
+            "    \\item Item 1",
+            "    \\item Item 2",
+            "    \\item Item 3",
+            "\\end{itemize}"
+        ].join("\n");
 
-            const doc = await vscode.workspace.openTextDocument({
-                language: "latex",
-                content: initContent
-            });
-            const editor = await vscode.window.showTextDocument(doc);
-            const vscodeRange = new vscode.Range(
-                doc.positionAt(0),
-                doc.positionAt(initContent.length)
-            );
-            editor.selection = new vscode.Selection(
-                vscodeRange.start,
-                vscodeRange.end
-            );
-
-            await vscode.commands.executeCommand(
-                "latex-pair-editor.wrapInItemize"
-            );
-            assert.strictEqual(editor.document.getText(), expectedContent);
+        const doc = await vscode.workspace.openTextDocument({
+            language: "latex",
+            content: initContent
         });
+        const editor = await vscode.window.showTextDocument(doc);
+        const vscodeRange = new vscode.Range(
+            doc.positionAt(0),
+            doc.positionAt(initContent.length)
+        );
+        editor.selection = new vscode.Selection(
+            vscodeRange.start,
+            vscodeRange.end
+        );
 
-        test("Wrap in Enumerate Command", async () => {
-            const initContent = "Item 1\nItem 2\nItem 3";
-            const expectedContent = [
-                "\\begin{enumerate}",
-                "    \\item Item 1",
-                "    \\item Item 2",
-                "    \\item Item 3",
-                "\\end{enumerate}"
-            ].join("\n");
+        await vscode.commands.executeCommand("latex-pair-editor.wrapInItemize");
+        assert.strictEqual(editor.document.getText(), expectedContent);
+    });
 
-            const doc = await vscode.workspace.openTextDocument({
-                language: "latex",
-                content: initContent
-            });
-            const editor = await vscode.window.showTextDocument(doc);
-            const vscodeRange = new vscode.Range(
-                doc.positionAt(0),
-                doc.positionAt(initContent.length)
-            );
-            editor.selection = new vscode.Selection(
-                vscodeRange.start,
-                vscodeRange.end
-            );
+    test("Wrap in Enumerate Command", async () => {
+        const initContent = "Item 1\nItem 2\nItem 3";
+        const expectedContent = [
+            "\\begin{enumerate}",
+            "    \\item Item 1",
+            "    \\item Item 2",
+            "    \\item Item 3",
+            "\\end{enumerate}"
+        ].join("\n");
 
-            await vscode.commands.executeCommand(
-                "latex-pair-editor.wrapInEnumerate"
-            );
-            assert.strictEqual(editor.document.getText(), expectedContent);
+        const doc = await vscode.workspace.openTextDocument({
+            language: "latex",
+            content: initContent
         });
+        const editor = await vscode.window.showTextDocument(doc);
+        const vscodeRange = new vscode.Range(
+            doc.positionAt(0),
+            doc.positionAt(initContent.length)
+        );
+        editor.selection = new vscode.Selection(
+            vscodeRange.start,
+            vscodeRange.end
+        );
 
-        test("Remove empty lines before itemize wrapping", async () => {
-            const initContent = "First item\n\nThird item";
-            const expectedContent = [
-                "\\begin{itemize}",
-                "    \\item First item",
-                "    \\item Third item",
-                "\\end{itemize}"
-            ].join("\n");
+        await vscode.commands.executeCommand(
+            "latex-pair-editor.wrapInEnumerate"
+        );
+        assert.strictEqual(editor.document.getText(), expectedContent);
+    });
 
-            const doc = await vscode.workspace.openTextDocument({
-                language: "latex",
-                content: initContent
-            });
-            const editor = await vscode.window.showTextDocument(doc);
-            editor.selection = new vscode.Selection(
-                doc.positionAt(0),
-                doc.positionAt(initContent.length)
-            );
+    test("Remove empty lines before itemize wrapping", async () => {
+        const initContent = "First item\n\nThird item";
+        const expectedContent = [
+            "\\begin{itemize}",
+            "    \\item First item",
+            "    \\item Third item",
+            "\\end{itemize}"
+        ].join("\n");
 
-            await vscode.commands.executeCommand(
-                "latex-pair-editor.wrapInItemize"
-            );
-            assert.strictEqual(editor.document.getText(), expectedContent);
+        const doc = await vscode.workspace.openTextDocument({
+            language: "latex",
+            content: initContent
         });
+        const editor = await vscode.window.showTextDocument(doc);
+        editor.selection = new vscode.Selection(
+            doc.positionAt(0),
+            doc.positionAt(initContent.length)
+        );
+
+        await vscode.commands.executeCommand(
+            "latex-pair-editor.unwrapEnvironment"
+        );
+        assert.strictEqual(editor.document.getText(), expectedContent);
     });
 });
