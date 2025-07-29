@@ -71,7 +71,7 @@ First Version, Initial Commit, Using RegExp to recognize environments.
 
 Rewrite docs, Github Synchronous
 
-### Version 0.03
+### Version 0.0.4
 
 Support Itemize And Enumerate Warpper, and Unwrapping.
 
