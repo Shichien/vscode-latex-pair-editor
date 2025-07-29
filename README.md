@@ -22,19 +22,17 @@ In fact, we just created a new cursor, so multi-cursor is supported.
 
 Use the cursor to select a portion of text, right-click to use the corresponding command to wrap, supporting itemize and enumerate.
 
-<img src="assets/readme/itemize-wrapper.gif" width="75%" alt="Cursor-Edit-Mode">
+<img src="assets/readme/itemize-wrapper.gif" width="75%" alt="Itemize-Wrapper">
 
 > [!TIP]
 > If the multiline text contains empty lines, this command will delete the empty lines.
 
-<img src="assets/readme/multi-text-enumerate-wrapper.gif" width="75%" alt="Cursor-Edit-Mode">
+<img src="assets/readme/multi-text-enumerate-wrapper.gif" width="75%" alt="Enumerate-Wrapper">
 
 ## Usage Instructions
 
 - **How to use:**
-    - Click inside the environment name, for example, the word `itemize` in `\begin{itemize}`.
-    > [!TIP]
-    > Works with any environment in `\begin{...}` and `\end{...}`.
+    - Click inside the environment name, for example, the word `itemize` in `\begin{itemize}`. **(Works with any environment in `\begin{...}` and `\end{...}`)**.
     - Move the cursor inside the environment can also take effect.
     - After selecting the text, right-click to use the wrap command.
 
