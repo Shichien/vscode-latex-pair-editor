@@ -2,6 +2,8 @@
 
 LaTeX-Pair-Editor will enhance your editing when writing LaTeX pair environments, such as `\begin` and `\end`.
 
+LaTeX-Pair-Editor also provide better env wrapper commands.
+
 ## Features
 
 ### ✨ Synchronized Environment Name Editing
@@ -16,10 +18,25 @@ In fact, we just created a new cursor, so multi-cursor is supported.
 
 <img src="assets/readme/vim_delete.gif" width="75%" alt="Cursor-Edit-Mode">
 
+### ⚙️ Itemize And Enumerate Wrapper
+
+Use the cursor to select a portion of text, right-click to use the corresponding command to wrap, supporting itemize and enumerate.
+
+<img src="assets/readme/itemize-wrapper.gif" width="75%" alt="Cursor-Edit-Mode">
+
+> [!TIP]
+> If the multiline text contains empty lines, this command will delete the empty lines.
+
+<img src="assets/readme/multi-text-enumerate-wrapper.gif" width="75%" alt="Cursor-Edit-Mode">
+
 ## Usage Instructions
 
-* **How to use :** Click inside the environment name, for example, the word `itemize` in `\begin{itemize}`.
-* **Supported Tags:** Works with any environment in `\begin{...}` and `\end{{...}`.
+- **How to use:**
+    - Click inside the environment name, for example, the word `itemize` in `\begin{itemize}`.
+    > [!TIP]
+    > Works with any environment in `\begin{...}` and `\end{...}`.
+    - Move the cursor inside the environment can also take effect.
+    - After selecting the text, right-click to use the wrap command.
 
 ## Installing
 
@@ -55,5 +72,9 @@ First Version, Initial Commit, Using RegExp to recognize environments.
 ### Version 0.0.2
 
 Rewrite docs, Github Synchronous
+
+### Version 0.03
+
+Support Itemize And Enumerate Warpper, and Unwrapping.
 
 ---
